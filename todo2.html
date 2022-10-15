@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <!-- js Bootsrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Todo List App</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .selesai {
+            text-decoration: line-through;
+        }
+        .selector-for-some-widget {
+            box-sizing: content-box;
+          }
+    </style>
+</head>
+<body>
+    <header class="container-fluid bg-primary text-white py-4">
+        <h1>TODO APPS</h1>
+    </header>
+    <div class="container border mt-4">
+        <form >
+            <div class="mb-3 mt-3">
+                <label for="#" class="form-label mb-3">Isi Kegiatanmu</label>
+                <input type="text" class="form-control mb-3" id="newText">
+                <button onclick="add()" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="container border mt-4">
+        <p class="form-text">Klik pada list jika sudah selesai</p>
+        <p>contoh : <strike>"Mandi"</strike></p>
+    <ol id="todo" class="list-group m-4">
+            
+    </ol>
+</div>
+
+<footer class="container-fluid bg-light  col-12 py-4">
+        
+          <p>Arya Widya Hastungkoro &copy; 2022 </p>
+        
+    
+</footer>
+    
+    <script>
+        //1. ambil nilai
+        const todo = document.getElementById('todo');
+        let newText = document.getElementById('newText');  
+        
+        //2. tambahkan list baru
+        function add(){
+            let newList = "<li class='mb-4'> <span onclick='toggle(this)'>"+ newText.value + "</span>"
+             + "<button onclick='apus(this)' class='btn btn-danger ms-2'>Hapus</button>"+ "</li>";
+
+            todo.insertAdjacentHTML('afterbegin', newList);
+
+            newText.value = "";
+        }
+
+        // 3. coret jika sudah selesai
+        function toggle(e){
+            e.classList.toggle('selesai');
+        }
+
+        //4. kosongkan list
+        function apus(e){
+            e.parentElement.remove();
+        }
+
+    </script>
+</body>
+</html>
